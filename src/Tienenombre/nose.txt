@@ -1,0 +1,86 @@
+const usuarios = {
+
+    nombre: 'Enmanuel',
+    Años: 17,
+    nacimiento: 0,
+    tienecuaito: 2000
+
+}
+
+
+const referencia = DB.collection('usuarios');
+const usuariosRef = referencia
+
+
+DB.collection('usuarios')
+    .add(usuarios)
+    .then(docRef => {
+    console.log(docRef)
+    }
+    )
+    .catch(e => console.log('error', e))
+
+forma para cambiar algo de la base
+
+
+usuariosRef
+    .doc('NCpPpdoE05kX3Hm49zCb')
+    .update({
+        nombre: 'Enmanuel',
+        Años: 17.5,
+        nacimiento: 0,
+        tienecuaito: 2000
+
+
+    })
+
+//es lo mismo con es set solo que este borrar todo lo demas osea que solo deja lo que pones ahi si te pregunta es la forma destrutiva
+
+usuariosRef
+    .doc('zNpUFtjAiKz4cBPtXHsK')
+    .set({
+        nombre: 'Enmanuel.TG'
+    })
+
+para poder borrar
+
+usuariosRef
+    .doc('')
+    .delete()
+    .then(resp => console.log(resp))
+    .catch(e => console.log('error', e));
+
+usuariosRef
+    .onSnapshot(snap => {
+        documents(snap);
+    })
+
+
+usuariosRef
+    .onSnapshot(documents);
+
+
+usuariosRef
+    .where('Años', '==', 17.5)
+    .get()
+    .then(documents);
+
+
+
+usuariosRef
+    .where('tienecuaito', '>=', 2000)
+    .get()
+    .then(documents);
+
+usuariosRef
+    .where('tienecuaito', '>=', 2000)
+    .where('nombre', '==', 'Enmanuel')
+    .get()
+    .then(documents);
+
+
+    usuariosRef
+    .orderBy('')
+    .get()
+    .then(documents)
+    ;
